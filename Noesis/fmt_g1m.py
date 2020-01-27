@@ -422,7 +422,7 @@ def parseG1MOid(bs):
 		if boneList[0].name == "root":
 			boneList[0].name = stringList[1].split(':')[-1]
 
-		print("Bone names %s parsed" % stringList[1])
+		print("Bone names for %s parsed" % stringList[1])
 	else:
 		print("Oid type is plain")
 		for n, b in zip(stringList, boneList):
