@@ -1130,7 +1130,7 @@ def LoadModel(data, mdlList):
 
 	if bLoadG1T or noesis.optWasInvoked("-g1mtexture"):
 		if (noesis.optWasInvoked("-g1mtexture")):
-			with open(noesis.optGetArg("-g1mtexture")) as g1tStream:
+			with open(noesis.optGetArg("-g1mtexture"), "rb") as g1tStream:
 				g1tData = g1tStream.read()
 		else:
 			g1tData = rapi.loadPairedFileOptional("texture file", ".g1t")
@@ -1161,14 +1161,14 @@ def LoadModel(data, mdlList):
 	if bLoadG1MS or noesis.optWasInvoked("-g1mskeleton"):
 		if g1sData is None:
 			if (noesis.optWasInvoked("-g1mskeleton")):
-				with open(noesis.optGetArg("-g1mskeleton")) as g1sStream:
+				with open(noesis.optGetArg("-g1mskeleton"), "rb") as g1sStream:
 					g1sData = g1sStream.read()
 			else:
 				g1sData = rapi.loadPairedFileOptional("skeleton file", ".g1m")
 	
 	if bLoadG1MOid or noesis.optWasInvoked("-g1mskeletonoid"):
 		if (noesis.optWasInvoked("-g1mskeletonoid")):
-			with open(noesis.optGetArg("-g1mskeletonoid")) as oidStream:
+			with open(noesis.optGetArg("-g1mskeletonoid"), "rb") as oidStream:
 				oidData = oidStream.read()
 		else:
 			oidData = rapi.loadPairedFileOptional("skeleton name file", "Oid.bin")
