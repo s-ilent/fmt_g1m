@@ -1502,7 +1502,7 @@ def LoadModel(data, mdlList):
 	
 	if bLoadG1H or noesis.optWasInvoked("-g1mmorph"):
 		if (noesis.optWasInvoked("-g1mmorph")):
-			with open(noesis.optGetArg("-g1mmorph")) as g1morphStream:
+			with open(noesis.optGetArg("-g1mmorph"), "rb") as g1morphStream:
 				g1hData = g1morphStream.read()
 		else:
 			g1hData = rapi.loadPairedFileOptional("morph target file", ".g1h")		
