@@ -430,6 +430,7 @@ def parseG1MS(currentPosition, bs, isDefault = True):
 
 def parseG1MOid(bs):
 	if len(boneList) == 0: 
+		print("Can't parse Oid; no bones to apply to")
 		return 1
 	stringList = []
 	while(1):
@@ -1401,11 +1402,6 @@ def LoadModel(data, mdlList):
 		else:
 			oidData = rapi.loadPairedFileOptional("skeleton name file", "Oid.bin")
 
-	if oidData is not None:
-		bs3 = NoeBitStream(oidData)
-		parseG1MOid(bs3)
-
-
 	magic = noeStrFromBytes(bs.readBytes(4))
 	version = noeStrFromBytes(bs.readBytes(4))
 	filesize = bs.readUInt()
@@ -1445,6 +1441,10 @@ def LoadModel(data, mdlList):
 		# elif chunkName==0x47314D4D:
 		# parseG1MM(bs)
 		bs.seek(currentPosition + chunkSize)	
+
+	if oidData is not None:
+		bs3 = NoeBitStream(oidData)
+		parseG1MOid(bs3)
 	
 	if bLoadG1AG2AFolder or noesis.optWasInvoked("-g1manimationdir"):
 		if noesis.optWasInvoked("-g1manimationdir"):
